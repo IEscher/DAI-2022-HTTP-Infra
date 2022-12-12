@@ -1,2 +1,5 @@
-FROM php:7.2-apache
-COPY src/ /var/www/html/
+FROM node:18.12.1
+
+COPY src/ /opt/app
+
+CMD ["node", "/opt/app/index.js"]
