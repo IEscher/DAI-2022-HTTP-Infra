@@ -46,3 +46,17 @@ In this step, it will be shown how to:
 docker exec -it amazing_noyce /bin/bash
 ```
 
+The terminal then goes to:
+
+```text
+root@9187753936d4:/var/www/html#
+```
+
+We can then interact with some commands like: ls, echo and so on...
+
+**Note: Everything done through that interaction is static and will be lost when the container is stopped!**
+
+The default page can be set with an "index.html" file.
+
+To avoid losing created and modified files, we can create a docker image through Dockerfile's rules. Then each time we start the container, we begin with the same structure. (look the [content](content/) folder)
+
