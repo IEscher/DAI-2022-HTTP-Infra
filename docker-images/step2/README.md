@@ -60,3 +60,13 @@ The default page can be set with an "index.html" file.
 
 To avoid losing created and modified files, we can create a docker image through Dockerfile's rules. Then each time we start the container, we begin with the same structure. (look the [content](content/) folder)
 
+```shell
+docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_NAME> .
+```
+
+And then run it with:
+
+```shell
+docker run -p 9090:80 --rm <TAGGED_IMAGE_NAME>
+```
+
