@@ -1,0 +1,11 @@
+
+version: "3.9"
+services:
+    static:
+        build: ./../step1/.
+        ports: 
+            - "9000:80"
+    dynamic:
+        build: ./../step2/.
+        ports: 
+            - "9001:3000"
