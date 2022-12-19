@@ -21,7 +21,7 @@ services:
         labels:
             - traefik.autodetect=true
             #router: dynamic
-            - traefik.http.routers.dynamic.rule=Host(`localhost`) && Path(`3/api`)
+            - traefik.http.routers.dynamic.rule=Host(`localhost`) && Path(`/api`)
             - traefik.http.routers.dynamic.entryPoints=dynamic_server
             #- traefik.http.routers.front-static-dc.middlewares=cors@file
 
