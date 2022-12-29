@@ -1,3 +1,23 @@
+<!-- Ref.: https://www.tutorialspoint.com/How-to-change-the-color-of-links-in-HTML -->
+<head>
+	<style>
+		a:link {
+			color: greenyellow;
+			background-color: transparent;
+			text-decoration: none;
+		}
+		a:visited {
+			color: deepskyblue;
+			background-color: transparent;
+			text-decoration: none;
+		}
+		a:active {
+			color: yellow;
+			background-color: transparent;
+		}
+	</style>
+</head>
+
 	<!-- script ref.: https://stackoverflow.com/questions/43875469/change-webpage-title-when-tab-not-in-focus -->
 	<!-- Nav. bar title -->
 	<script>
