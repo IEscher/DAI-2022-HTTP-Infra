@@ -41,7 +41,7 @@ docker-compose kill
 
 ## 2nd part: Launching pages
 
-With a browser, it is now possible to access the static page by typing [localhost](https://localhost) in the nav. bar.
+With a browser, it is now possible to access the static page by typing [localhost](http://localhost) in the nav. bar.
 
-And for the dynamic page, it can be accessed by typing [localhost/api](https://localhost/api).
+And for the dynamic page, it can be accessed by typing [localhost/api](http://localhost/api).
 
