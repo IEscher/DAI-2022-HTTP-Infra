@@ -6,7 +6,25 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
 	<!-- Nav. bar title -->
-        <title>Index truc,truc,truc</title>
+	<!--<title>Index truc,truc,truc</title>-->
+	<!-- script ref.: https://stackoverflow.com/questions/43875469/change-webpage-title-when-tab-not-in-focus -->
+	<script>
+		var title = "DAI-2022: IER/KBP";
+		var blurMessage = [     "Please come back! :-("         ,
+					"Don't you love me anymore? :-(",
+					"Fancy a cookie?"               ,
+					"I'm feeling lonely :-("        ,
+					"We miss you already D: !!"	];
+
+		window.addEventListener("blur", function () {
+			var rand = Math.floor((Math.random() * blurMessage.length));
+			document.title = blurMessage[rand];
+		});
+
+		window.addEventListener("focus", function() {
+			document.title = title;
+		});
+	</script>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap Icons-->
