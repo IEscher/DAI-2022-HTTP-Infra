@@ -12,7 +12,13 @@ var chance = new Chance();
 var Express = require('express');
 var app = Express();
 
+var LISTENING_PORT = 3000;
+
 app.get('/', function(req, res) {
+	res.send("DAI Logs: Better chance with /api\n");
+});
+
+app.get('/api', function(req, res) {
 //	res.send("Hello DAI");
 	res.send( generateConfig() );
 });
@@ -23,8 +29,8 @@ app.get('/', function(req, res) {
 //	res.send("Hello DAI/test");
 //});
 
-app.listen(3000, function() {
-	console.log('Accepting HTTP request on port 3000');
+app.listen(LISTENING_PORT, function() {
+	console.log('Accepting HTTP request on port ' + LISTENING_PORT);
 });
 
 function generateConfig() {
