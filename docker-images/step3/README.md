@@ -18,7 +18,11 @@ At first, it is needed to build the recipe, by doing:
 
 ```shell
 docker-compose up
+# OR
+docker-compose up --build
 ```
+
+The first cmd will print warning that the image has not been built already.
 
 Then, it will run the container by default. It is possible to run
 the container in background, with:
@@ -31,5 +35,7 @@ The container can be killed with:
 
 ```shell
 docker-compose stop
+# OR
+docker-compose kill 
 ```
 
