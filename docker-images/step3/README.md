@@ -16,7 +16,7 @@ oth previous steps) and expose their ports to the host machine.
 
 At first, it is needed to build the recipe, by doing:
 
-```shell
+```docker
 docker-compose up
 # OR
 docker-compose up --build
@@ -27,13 +27,13 @@ The first cmd will print warning that the image has not been built already.
 Then, it will run the container by default. It is possible to run
 the container in background, with:
 
-```shell
+```docker
 docker-compose start
 ```
 
 The container can be killed with:
 
-```shell
+```docker
 docker-compose stop
 # OR
 docker-compose kill 
@@ -44,4 +44,19 @@ docker-compose kill
 With a browser, it is now possible to access the static page by typing [localhost](http://localhost) in the nav. bar.
 
 And for the dynamic page, it can be accessed by typing [localhost/api](http://localhost/api).
+
+## 3rd part: Multiple instances
+
+To launch multiple instances of a service, it can be done with the cmd:
+
+```docker
+docker-compose up --scale <SERVICE_NAME>=<N_INSTANCES>
+```
+
+Ex. we wrote a service ```static``` in [docker-compose.yml](docker-compose.yml):
+
+```docker
+# Launch 3 instances of the static service (see step1)
+docker-compose up -d --scale static=3
+```
 
