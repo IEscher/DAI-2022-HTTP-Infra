@@ -4,10 +4,10 @@ services:
     # ******************************* #
     static:
         build: ./../step1/.
-        container_name: dai_http_step1
+        #container_name: dai_http_step1
         ports:
-            - "9001:80"
-            #- "80"
+            #- "9001:80"
+            - "80"
         labels:
             - traefik.autodetect=true
             #router: static
@@ -17,10 +17,10 @@ services:
     # ******************************* #
     dynamic:
         build: ./../step2/.
-        container_name: dai_http_step2
+        #container_name: dai_http_step2
         ports:
-            - "9002:3000"
-            #- "3000"
+            #- "9002:3000"
+            - "3000"
         labels:
             - traefik.autodetect=true
             #router: dynamic
@@ -38,6 +38,8 @@ services:
         ports:
             - "80:80"       # The HTTP port
             - "9000:8080"   # The Web UI (enabled by --api.insecure=true)
+            #- "9001:80"     # Static
+            #- "9002:3000"   # Dynamic
         volumes:
             # So that Traefik can listen to the Docker events
             - /var/run/docker.sock:/var/run/docker.sock
