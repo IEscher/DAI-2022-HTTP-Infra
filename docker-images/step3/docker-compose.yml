@@ -5,8 +5,8 @@ services:
     static:
         build: ./../step1/.
         ports:
-            #- "9001:80"
-            - "80"
+            - "9001:80"
+            #- "80"
         labels:
             - traefik.autodetect=true
             #router: static
@@ -23,7 +23,7 @@ services:
             - traefik.autodetect=true
             #router: dynamic
             - traefik.http.routers.dynamic.rule=(Host(`localhost`) && PathPrefix(`/api`))
-              #- traefik.http.routers.dynamic.entryPoints=dynamic_server
+            #- traefik.http.routers.dynamic.entryPoints=dynamic_server
 
     # ******************************* #
     reverse-proxy:
