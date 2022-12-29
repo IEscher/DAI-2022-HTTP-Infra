@@ -5,37 +5,37 @@ services:
     static:
         build: ./../step1/.
         ports:
-            - "9001:80"
+            #- "9001:80"
+            - "80"
         labels:
             - traefik.autodetect=true
             #router: static
             - traefik.http.routers.static.rule=Host(`localhost`)
             - traefik.http.routers.static.entryPoints=static_server
-            #- traefik.http.routers.front-static-dc.middlewares=cors@file
 
     # ******************************* #
     dynamic:
         build: ./../step2/.
         ports:
             - "9002:3000"
+            #- "3000"
         labels:
             - traefik.autodetect=true
             #router: dynamic
-            - traefik.http.routers.dynamic.rule=Host(`localhost`) && Path(`/api`)
+            - traefik.http.routers.dynamic.rule=(Host(`localhost`) && PathPostfix(`/api`))
             - traefik.http.routers.dynamic.entryPoints=dynamic_server
-            #- traefik.http.routers.front-static-dc.middlewares=cors@file
 
     # ******************************* #
     reverse-proxy:
         # The official v2 Traefik docker image
         image: traefik:v2.9
+        # Enables the web UI and tells Traefik to listen to docker
+        command: --api.insecure=true --providers.docker
+            --entryPoints.static_server.address=:9001
+            --entryPoints.dynamic_server.address=:9002
         ports:
             - "80:80"       # The HTTP port
             - "9000:8080"   # The Web UI (enabled by --api.insecure=true)
         volumes:
             # So that Traefik can listen to the Docker events
             - /var/run/docker.sock:/var/run/docker.sock
-        # Enables the web UI and tells Traefik to listen to docker
-        command: --api.insecure=true --providers.docker
-            --entryPoints.static_server.address=:9001
-            --entryPoints.dynamic_server.address=:9002
