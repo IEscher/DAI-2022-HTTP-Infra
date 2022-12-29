@@ -60,3 +60,13 @@ Ex. we wrote a service ```static``` in [docker-compose.yml](docker-compose.yml):
 docker-compose up -d --scale static=3
 ```
 
+To check the ips of the different instances, we need to reach the Traefik dashboard at [localhost:9000](http://localhost:9000) (9000 because we remap port 8080 on 9000 in the [docker-compose rules](docker-compose.yml) file.
+
+Then reach: HTTP > Services, we have then a dashboard like:
+
+![http_services](pics/httpServicesDashboard.png)
+
+On last row, we can see that the static-step3@docker has 3 servers launched. By clicking on it, we can see their ips to reach them:
+
+![static_ips](pics/staticIps.png)
+
