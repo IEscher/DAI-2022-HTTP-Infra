@@ -26,7 +26,7 @@ app.get('/', function(req, res) {
 //});
 
 app.listen(LISTENING_PORT, function() {
-	console.log('Accepting HTTP request on port ' + LISTENING_PORT);
+	console.log("Accepting HTTP request on port " + LISTENING_PORT);
 });
 
 function generateConfig() {
