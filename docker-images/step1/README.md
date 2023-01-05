@@ -1,5 +1,5 @@
 
-# STEP 2: Dynamic HTTP Server
+# STEP 1: Dynamic HTTP Server
 
 ***Remark(s):***
 
