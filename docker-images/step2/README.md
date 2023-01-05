@@ -9,12 +9,6 @@
 
 On step1, we used an html page (static version). Let's use a more dynamic approach through a nodejs + express application, with a ["index.js"](src/index.js) file.
 
-And then run it with:
-
-```shell
-npm index.js
-```
-
 ### Dependencies
 
 ```shell
@@ -41,7 +35,13 @@ Dependencies can then be seen in the [node_modules/](src/node_modules) folder
 
 ### Test app
 
-Execute application and connect to it with telnet:
+Run it in local with:
+
+```shell
+npm index.js
+```
+
+And then connect to it with telnet:
 
 ```shell
 telnet localhost 3000

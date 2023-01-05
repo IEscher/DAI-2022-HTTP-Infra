@@ -1,0 +1,6 @@
+
+More refs (except those from README)
+
+Compose rules with multiple services:
+https://stackoverflow.com/questions/29835905/docker-compose-using-multiple-dockerfiles-for-multiple-services
+
