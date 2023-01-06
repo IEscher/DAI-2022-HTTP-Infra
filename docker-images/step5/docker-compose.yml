@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+    # ******************************* #
+    static:
+        build: ./static/.
+        deploy:
+            replicas: 4
+        ports:
+            - "80"
+        labels:
+            - traefik.autodetect=true
+            - traefik.http.routers.static.rule=Host(`localhost`)
+            # sticky session
+            - traefik.http.services.static.loadbalancer.sticky.cookie=true
+            - traefik.http.services.static.loadbalancer.sticky.cookie.name=JSESSIONID
+
+    # ******************************* #
+    dynamic:
+        build: ./dynamic/.
+        ports:
+            - "3000"
+        labels:
+            - traefik.autodetect=true
+            - traefik.http.routers.dynamic.rule=(Host(`localhost`) && (PathPrefix(`/api`) || PathPrefix(`/ip`)))
+
+    # ******************************* #
+    reverse-proxy:
+        # The official v2 Traefik docker image
+        image: traefik:v2.9
+        # Enables the web UI and tells Traefik to listen to docker
+        command: --api.insecure=true --providers.docker
+        ports:
+            - "80:80"       # The HTTP port
+            - "9000:8080"   # The Web UI (enabled by --api.insecure=true)
+        volumes:
+            # So that Traefik can listen to the Docker events
+            - /var/run/docker.sock:/var/run/docker.sock
