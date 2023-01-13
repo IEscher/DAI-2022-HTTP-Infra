@@ -92,6 +92,7 @@ The steps to follow for this section are thus:
   * then implement the reverse proxy:
     * start by relaying the requests coming to "localhost/" to the **static HTTP server** (that's the easy part),
     * then relay the requests coming to "localhost/api/" to the **dynamic HTTP server** (here you will need to search a little bit in the documentation how to use the "/api" path prefix),
+    * to allow Traefik to connect to the servers it is important to use the `EXPOSE xxxx` command in the dockerfiles of the servers. Traefik will detect the ports and use them to connect to the servers.
 
 ### Acceptance criteria
 
