@@ -16,17 +16,6 @@ app.get('/api', function (req, res) {
     res.send(generateConfig());
 });
 
-app.get('/ip', function (req, res) {
-    res.send(req.headers['x-forwarded-for'] + "\n" + req.socket.remoteAddress + "\n"
-        + req.socket.localAddress + "\n" + req.ip + "\n" + os.hostname());
-});
-
-// After test, node test the full path
-// So the order is not important
-//app.get('/test', function(req, res) {
-//	res.send("Hello DAI/test");
-//});
-
 var server = app.listen(LISTENING_PORT, function () {
     console.log("Accepting HTTP request on port " + LISTENING_PORT);
 });
@@ -38,6 +27,12 @@ function generateConfig() {
     });
     console.log("Will generate " + nConfigs + " server configurations");
     var configs = [];
+
+    // Proof that the dynamic servers are answering in a round-robin fashion
+    configs.push({
+        Dynamic_server: os.hostname()
+    });
+
     var hosts = ["localhost", "smtp.tructruc.ch"];
     var encodings = ["ASCII", "UTF-8"];
     for (var i = 0; i < nConfigs; ++i) {

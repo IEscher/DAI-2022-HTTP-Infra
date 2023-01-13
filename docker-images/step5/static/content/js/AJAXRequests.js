@@ -1,25 +1,21 @@
 
+// Proof that the static servers are implementing sticky sessions
 function getServerIPAddress() {
     console.log("getServerIPAddress");
     fetch('http://localhost/ip')
         .then((response) => response.text())
         .then((data) => {
             if (data.length > 0) {
-                console.log("Response IP Address: " + data);
                 document.getElementsByClassName("server-name").item(0).innerHTML
-                    = "<pre>" + data + "</pre>";
+                    = "<pre>" + data.toString().match(/Hostname: (.*)/)[1] + "</pre>";
             }
         });
-
-    // document.getElementsByClassName("server-name").item(0).innerHTML
-    //                 = "<pre>" +  + "</pre>";
 }
 
 function getDynamicResponse() {
     fetch('http://localhost/api')
         .then((response) => response.json())
         .then((data) => {
-            // console.log(JSON.stringify(data));
             let message = "";
             if (data.length > 0) {
                 message = JSON.stringify(data, null, 4);
