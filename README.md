@@ -96,8 +96,7 @@ This must output some server's config. in JSON format, and different ones at eac
 
 Here, we will deploy a 1st version of the infrastructure with a static and dynamic web servers (respectively step1 & step2) using Docker compose.
 
-* You will need to install Docker compose on your machine. You'll find the instructions [on this link](https://docs.docker.com/compose/).
-* You will need to write a `docker-compose.yml` file. To do this, read the [introduction](https://docs.docker.com/compose/features-uses/), then have a look at this [tutorial](https://docs.docker.com/compose/gettingstarted/). They should provide the information you need to write your docker-compose file.
+This can be done using the [old docker-compose.yml](docker-images/step3/docker-compose.yml.old).
 
 ### In brief
 
@@ -134,6 +133,8 @@ http://localhost:9001/api # JSON configs
 
 The goal of this step is to run a reverse proxy in front of the dynamic and static Web servers such that the reverse proxy receives all connections and relays them to the respective Web server. 
 
+Using this time, the [docker-compose.yml](docker-images/step3/docker-compose.yml).
+
 ### Acceptance criteria
 
 * You have a GitHub repo with everything needed to build the various images.
@@ -143,6 +144,21 @@ The goal of this step is to run a reverse proxy in front of the dynamic and stat
 * You are able to explain why a reverse proxy is useful to improve the security of the infrastructure.
 * You have **documented** your configuration in your report.
 
+### In brief
+
+The build and run section are the same.
+
+The difference here is that we can access our services (always in the nav. bar of our browser) by only typing:
+
+```shell
+# Accessing static
+http://localhost
+
+# Accessing dynamic
+http://localhost/api
+```
+
+That must result with the same behavior as the previous section.
 
 ## Step 3a: Dynamic cluster management
 
@@ -157,6 +173,35 @@ Modify your `docker-compose.yml` file such that several instances of each Web se
 * You can do a demo to show that Traefik performs load balancing among the instances.
 * If you add or remove instances, you can show that the load balancer is dynamically updated to use the available instances.
 * You have **documented** your configuration in your report.
+
+### In brief
+
+Here, we have 2 possibilities to instanciate multiple instances.
+
+#### Using 'replicas' rules
+
+Add the `deploy` section to a service in the docker-compose.yml, like:
+
+```docker
+    static:
+        build: ./static/.
+        deploy:
+            replicas: 3
+```
+
+That will launch 3 instances of the static server.
+
+#### Using CLI argument
+
+```shell
+docker-compose up -d --scale <SERVICE_NAME>=<N_INSTANCES>
+# Ex. with the static service
+docker-compose up -d --scale static=3
+```
+
+This will have the same effect that using the replicas rules.
+
+*Reminder: -d flag launch the up cmd in background*
 
 ## Step 4: AJAX requests with JQuery
 
