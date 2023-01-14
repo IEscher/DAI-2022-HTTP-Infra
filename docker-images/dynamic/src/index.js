@@ -15,15 +15,14 @@ var app = Express();
 var LISTENING_PORT = 3000;
 
 app.get('/', function(req, res) {
-//	res.send("Hello DAI");
+	res.send("DAI Logs: Better chance with /api\n");
+});
+
+app.get('/api', function(req, res) {
 	res.send( generateConfig() );
 });
 
-// After test, node test the full path
-// So the order is not important
-//app.get('/test', function(req, res) {
-//	res.send("Hello DAI/test");
-//});
+// Remove '/test' statement
 
 app.listen(LISTENING_PORT, function() {
 	console.log("Accepting HTTP request on port " + LISTENING_PORT);
@@ -31,8 +30,8 @@ app.listen(LISTENING_PORT, function() {
 
 function generateConfig() {
 	var nConfigs = chance.integer({
-		min:  0,
-		max: 10
+		min:  1,
+		max: 4
 	});
 	console.log("Will generate " + nConfigs + " server configurations");
 	var configs = [];
