@@ -1,7 +1,7 @@
 
 # Step 4
 
-## docker compose
+## Launch servers
 
 First of all, we needed to build the recipe, by doing:
 
@@ -28,7 +28,7 @@ docker-compose stop
 docker-compose kill 
 ```
 
-## Launching page
+## Acessing page
 
 With a browser, it is now possible to access the static page by typing [localhost](http://localhost) in the nav. bar.
 
