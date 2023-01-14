@@ -4,10 +4,8 @@ version: "3.9"
 services:
     # ******************************* #
     static:
-        build: ./../step4/static/.
-        #container_name: dai_http_step1
+        build: static/.
         ports:
-            #- "9002:80"
             - "80"
         labels:
             - traefik.autodetect=true
@@ -17,10 +15,8 @@ services:
 
     # ******************************* #
     dynamic:
-        build: ./../step4/dynamic/.
-        #container_name: dai_http_step2
+        build: dynamic/.
         ports:
-            #- "9003:3000"
             - "3000"
         labels:
             - traefik.autodetect=true
@@ -32,20 +28,30 @@ services:
     # Ref: https://jacar.es/en/como-instalar-portainer-con-docker-compose/
     portainer:
         image: portainer/portainer-ce:latest
-        container_name: portainer
+        #container_name: portainer
         restart: unless-stopped
         security_opt:
             - no-new-privileges:true
         volumes:
-            - /etc/localtime:/etc/localtime:ro
-            - /var/run/docker.sock:/var/run/docker.sock:ro
-            - ./portainer-data:/data
+          - /etc/localtime:/etc/localtime:ro
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+          - ./portainer-data:/data
         ports:
-            #- 9001:9000
-            - 9000
-        labels:
-            - traefik.autodetect=true
-            - traefik.http.routers.portainer.rule=(Host(`localhost`) && PathPrefix(`/ui`))
+            - 9000:9000
+        ### OPTIONAL (To debug though to enable localhost/ui) ###
+        #labels:
+            #- traefik.autodetect=true
+            #router: portainer
+            #- traefik.http.routers.portainer.rule=(Host(`localhost`) && PathPrefix(`/ui`))
+            #- "traefik.http.routers.portainer.middlewares=portainer-stripprefix"
+            #- "traefik.http.middlewares.portainer-stripprefix.stripprefix.prefixes=/ui"
+            #- "traefik.http.services.portainer.loadbalancer.server.port=9000"
+            #- traefik.http.routers.portainer.entryPoints=portainer_server
+        #command: --no-auth
+        #environment:
+          #- PUID=1000
+          #- PGID=1000
+        ################
 
     # ******************************* #
     reverse-proxy:
@@ -55,7 +61,7 @@ services:
         command: --api.insecure=true --providers.docker
         ports:
             - "80:80"       # The HTTP port
-            - "9000:8080"   # The Web UI (enabled by --api.insecure=true)
+            - "8999:8080"   # The Web UI (enabled by --api.insecure=true)
         volumes:
             # So that Traefik can listen to the Docker events
             - /var/run/docker.sock:/var/run/docker.sock
