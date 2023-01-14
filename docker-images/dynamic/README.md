@@ -89,7 +89,7 @@ docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_NAME> .
 ### Running container
 
 ```shell
-docker run -p 8080:3000 --rm <TAGGED_IMAGE_NAME>
+docker run -p 9001:3000 --rm <TAGGED_IMAGE_NAME>
 ```
 
 *Note: Port 3000, because it is the default value used by express*
