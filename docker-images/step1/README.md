@@ -20,7 +20,7 @@ Asked to be different from the webcast.
 
 ## Docker
 
-The [Dockerfile](Dockerfile) create a container image based on an existing one, from "FROM section", and add our own files (in our case, the [content/ folder](content) containing the interface downloaded from bootstrap).
+The [Dockerfile](Dockerfile) create a container image based on an existing one, with the "FROM section", and add our own files (in our case, the [content/ folder](content) containing the interface downloaded from bootstrap).
 
 ### Container creation
 
