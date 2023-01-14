@@ -21,9 +21,9 @@ app.get('/', function(req, res) {
 
 // After test, node test the full path
 // So the order is not important
-//app.get('/test', function(req, res) {
-//	res.send("Hello DAI/test");
-//});
+app.get('/test', function(req, res) {
+	res.send("Hello DAI/test");
+});
 
 app.listen(LISTENING_PORT, function() {
 	console.log("Accepting HTTP request on port " + LISTENING_PORT);
