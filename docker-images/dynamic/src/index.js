@@ -15,10 +15,6 @@ var app = Express();
 var LISTENING_PORT = 3000;
 
 app.get('/', function(req, res) {
-	res.send("DAI Logs: Better chance with /api\n");
-});
-
-app.get('/api', function(req, res) {
 //	res.send("Hello DAI");
 	res.send( generateConfig() );
 });

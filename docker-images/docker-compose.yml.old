@@ -4,13 +4,13 @@ version: "3.9"
 services:
     # ******************************* #
     static:
-        build: ./../step1/.
+        build: ./static/.
         ports:
             - "9000:80"
 
     # ******************************* #
     dynamic:
-        build: ./../step2/.
+        build: ./dynamic/.
         ports:
             - "9001:3000"
 
