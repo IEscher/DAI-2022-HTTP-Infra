@@ -32,6 +32,28 @@ The website used this [free bootstrap's template](https://startbootstrap.com/the
 * You are able to show where the apache config files are located (in a running container).
 * You have **documented** your configuration in your report.
 
+### In brief
+
+Change directory to [docker-images/step1](docker-images/step1)
+
+In the shell, create container:
+
+```shell
+docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_NAME> .
+```
+
+Run it:
+
+```shell
+docker run -p 9090:80 --rm <TAGGED_IMAGE_NAME>
+```
+
+With a browser, access it by typing in the nav. bar:
+
+```shell
+http://localhost:9090
+```
+
 ## Step 2: Dynamic HTTP server with express.js
 
 ### Webcasts
