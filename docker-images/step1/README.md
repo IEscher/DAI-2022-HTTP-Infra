@@ -73,13 +73,13 @@ root@9187753936d4:/var/www/html#
 
 We can then interact with some commands like: ls, echo and so on...
 
-**Note: Everything done through that interaction is static and will be lost when the container is stopped!**
-
 The default page can be set with an "index.html" file.
 
-### Avoid data loss
+**Note: Everything done through that interaction is static and will be lost when the container is stopped!** This due to the fact that we run directly from the Dockerfile and not building it first.
 
-To avoid losing created and modified files, we can create a docker image through Dockerfile's rules. Then each time we start the container, we begin with the same structure. (look the [content](content/) folder)
+### Avoid data loss by building an image
+
+To avoid losing created and modified files, instead, we can create a local folder that will be copied to the docker image through Dockerfile's rule. Then each time we start the container, we begin with the same structure. (look the [content](content/) folder)
 
 ```shell
 docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_TAG> .
@@ -93,5 +93,6 @@ docker run -p 9000:80 --rm <TAGGED_IMAGE_NAME>
 
 **Flags:**
 
+- -t, --tag : Give  the container a tag, instead of a name, you choose the better for you ;)
 - --rm : Remove ressources used between the container and the host machine properly
 
