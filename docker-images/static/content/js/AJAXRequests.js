@@ -1,6 +1,6 @@
 
 // Proof that the static servers are implementing sticky sessions
-function getServerIPAddress() {
+function getServer() {
     console.log("getServerIPAddress");
     fetch('http://localhost/ip')
         .then((response) => response.text())
@@ -25,7 +25,7 @@ function getDynamicResponse() {
         });
 }
 
-getServerIPAddress();
+getServer();
 
 getDynamicResponse();
 setInterval(getDynamicResponse, 2000);
