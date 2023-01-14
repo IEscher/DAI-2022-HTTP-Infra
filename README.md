@@ -121,11 +121,14 @@ We can visit the services through a browser by typing in the nav. bar:
 
 ```shell
 # Accessing static
-http://localhost:9090
+http://localhost:9000
 
 # Accessing dynamic
-http://localhost:8080
+http://localhost:9001 # '/' being the default will tell that you'll have better chance with '/api' (kept because of the following part)
+http://localhost:9001/api # JSON configs
 ```
+
+*Note: Might need to clear "Form & search history" to avoid auto-completion of a suggested page*
 
 ## Step 3 (follow up): Reverse proxy with Traefik
 
