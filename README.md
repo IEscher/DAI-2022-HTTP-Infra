@@ -64,14 +64,9 @@ All steps to dockerfile's rules, create container, launch and access it are desc
 
 As asked to do differently (see Step2 section in [statements](Lab5-Statements.md), our generator gives random server's configuration (formatted as JSON, like those used in [our previous lab](https://github.com/KC5-BP/DAI-2022-SMTP-Classe-B/blob/main/config/configServer.json)) as dynamic payloads.
 
-### Acceptance criteria
-
-* You don't have to use express.js; if you want, you can use another JavaScript web framework or event another language.
-* You have **documented** your configuration in your report.
-
 ### In brief
 
-Change directory to [docker-images/step1](docker-images/step1)
+Change directory to [docker-images/step2](docker-images/step2)
 
 In the shell, create container:
 
@@ -95,41 +90,46 @@ With a browser, access it by typing in the nav. bar:
 http://localhost:8080
 ```
 
-This must output some server's config. in JSON format.
+This must output some server's config. in JSON format, and different ones at each page reload.
 
 ## Step 3: Docker compose to build the infrastructure
 
-There are no Webcasts (yet) for this part.
-
-The goal of this step is to use Docker compose to deploy a first version of the infrastructure with a single static and a single dynamic Web server.
+Here, we will deploy a 1st version of the infrastructure with a static and dynamic web servers (respectively step1 & step2) using Docker compose.
 
 * You will need to install Docker compose on your machine. You'll find the instructions [on this link](https://docs.docker.com/compose/).
 * You will need to write a `docker-compose.yml` file. To do this, read the [introduction](https://docs.docker.com/compose/features-uses/), then have a look at this [tutorial](https://docs.docker.com/compose/gettingstarted/). They should provide the information you need to write your docker-compose file.
 
-### Acceptance criteria
+### In brief
 
-* You have added a `docker-compose.yml` file to your GitHub repo.
-* You can start and stop an infrastructure with a single dynamic and a single static Web server using docker compose.
-* You can access both Web servers on your local machine on the respective ports.
-* You have **documented** your configuration in your report.
+The first time, it is good to build all services:
 
-## Step 3: Reverse proxy with Traefik
+```shell
+docker-compose build
+```
+
+Then, start them:
+
+```shell
+# To build (optional) and run, but this will monopolize the shell
+docker-compose up [--build]
+
+# To run in background
+docker-compose start
+```
+
+We can visit the services through a browser by typing in the nav. bar:
+
+```shell
+# Accessing static
+http://localhost:9090
+
+# Accessing dynamic
+http://localhost:8080
+```
+
+## Step 3 (follow up): Reverse proxy with Traefik
 
 The goal of this step is to run a reverse proxy in front of the dynamic and static Web servers such that the reverse proxy receives all connections and relays them to the respective Web server. 
-
-*(Several old Webcasts are available ([5a](https://www.youtube.com/watch?v=iGl3Y27AewU) [5b](https://www.youtube.com/watch?v=lVWLdB3y-4I) [5c](https://www.youtube.com/watch?v=MQj-FzD-0mE) [5d](https://www.youtube.com/watch?v=B_JpYtxoO_E) [5e](https://www.youtube.com/watch?v=dz6GLoGou9k)) which show a methods to do this with Apache.
-However, **we do not recommend anymore to follow this method** but instead to use a more modern approach, based on [Traefik](https://traefik.io/traefik/). Traefik is a reverse proxy which interfaces directly with Docker to obtain the list of active backend servers. This means that it can dynamically adjust to the number of running server.)*
-
-The steps to follow for this section are thus:
-
-* read the [Traefik Quick Start](https://doc.traefik.io/traefik/getting-started/quick-start/) documentation and add a new service "reverse_proxy" to your `docker-compose.yml` file using the Traefik docker image
-* configure the Traefik service and the communication between the Web servers and Traefik:
-  * first read the documentation of Traefik, including those ones:
-    * the [Traefik Router](https://doc.traefik.io/traefik/routing/routers/) documentation, in particular the "Rule" section,
-    * the [Traefik & Docker](https://doc.traefik.io/traefik/routing/providers/docker/) documentation, in particular for the dynamic Web server. 
-  * then implement the reverse proxy:
-    * start by relaying the requests coming to "localhost/" to the **static HTTP server** (that's the easy part),
-    * then relay the requests coming to "localhost/api/" to the **dynamic HTTP server** (here you will need to search a little bit in the documentation how to use the "/api" path prefix),
 
 ### Acceptance criteria
 
