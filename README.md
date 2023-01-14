@@ -40,12 +40,16 @@ In the shell, create container:
 
 ```shell
 docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_NAME> .
+# Here's a tag if you don't have one easily :D
+docker build --tag dai/http_step1 .
 ```
 
 Run it:
 
 ```shell
 docker run -p 9090:80 --rm <TAGGED_IMAGE_NAME>
+# Tagged container
+docker run -p 9090:80 --rm dai/http_step1
 ```
 
 With a browser, access it by typing in the nav. bar:
