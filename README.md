@@ -25,7 +25,7 @@ Except for step1, we both tried to do a version, so one version is in the dedica
 
 ### Acceptance criteria
 
-All steps to dockerfile's rules, create container, launch and access it are described in the [step1's README file](docker-images/step1/README)
+All steps to dockerfile's rules, create container, launch and access it are described in the [step1's README file](docker-images/step1/README.md)
 
 The website used this [free bootstrap's template](https://startbootstrap.com/theme/creative).
 
@@ -48,7 +48,7 @@ Run it:
 
 ```shell
 docker run -p 9090:80 --rm <TAGGED_IMAGE_NAME>
-# Tagged container
+# With tagged container
 docker run -p 9090:80 --rm dai/http_step1
 ```
 
@@ -60,19 +60,42 @@ http://localhost:9090
 
 ## Step 2: Dynamic HTTP server with express.js
 
-### Webcasts
+All steps to dockerfile's rules, create container, launch and access it are described in the [step2's README file](docker-images/step2/README.md)
 
-* [Labo HTTP (2a): Application node "dockerisée"](https://www.youtube.com/watch?v=fSIrZ0Mmpis)
-* [Labo HTTP (2b): Application express "dockerisée"](https://www.youtube.com/watch?v=o4qHbf_vMu0)
+As asked to do differently (see Step2 section in [statements](Lab5-Statements.md), our generator gives random server's configuration (formatted as JSON, like those used in [our previous lab](https://github.com/KC5-BP/DAI-2022-SMTP-Classe-B/blob/main/config/configServer.json)) as dynamic payloads.
 
 ### Acceptance criteria
 
-* You have a GitHub repo with everything needed to build the Docker image.
-* You can do a demo, where you build the image, run a container and access content from a browser.
-* You generate dynamic, random content and return a JSON payload to the client.
-* You cannot return the same content as the webcast (you cannot return a list of people).
 * You don't have to use express.js; if you want, you can use another JavaScript web framework or event another language.
 * You have **documented** your configuration in your report.
+
+### In brief
+
+Change directory to [docker-images/step1](docker-images/step1)
+
+In the shell, create container:
+
+```shell
+docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_NAME> .
+# Here's a friendly tag again ^^
+docker build --tag dai/http_step2 .
+```
+
+Run it:
+
+```shell
+docker run -p 8080:3000 --rm <TAGGED_IMAGE_NAME>
+# With tagged container
+docker run -p 8080:3000 --rm dai/http_step2
+```
+
+With a browser, access it by typing in the nav. bar:
+
+```shell
+http://localhost:8080
+```
+
+This must output some server's config. in JSON format.
 
 ## Step 3: Docker compose to build the infrastructure
 
