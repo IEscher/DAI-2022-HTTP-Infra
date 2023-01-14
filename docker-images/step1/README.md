@@ -77,6 +77,8 @@ We can then interact with some commands like: ls, echo and so on...
 
 The default page can be set with an "index.html" file.
 
+### Avoid data loss
+
 To avoid losing created and modified files, we can create a docker image through Dockerfile's rules. Then each time we start the container, we begin with the same structure. (look the [content](content/) folder)
 
 ```shell
@@ -88,4 +90,8 @@ And then run it with:
 ```shell
 docker run -p 9000:80 --rm <TAGGED_IMAGE_NAME>
 ```
+
+**Flags:**
+
+- --rm : Remove ressources used between the container and the host machine properly
 
