@@ -1,0 +1,16 @@
+
+version: "3.9"
+
+services:
+    # ******************************* #
+    static:
+        build: ./static/.
+        ports:
+            - "9000:80"
+
+    # ******************************* #
+    dynamic:
+        build: ./dynamic/.
+        ports:
+            - "9001:3000"
+
