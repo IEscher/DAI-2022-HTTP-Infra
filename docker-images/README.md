@@ -9,7 +9,7 @@ The main difference between docker run and docker compose is that:
 - docker compose: read a configuration file (in a YAML format)
     - Compose's rules can be made from created Dockerfile. This is great knowing that we write some for previous steps.
 
-From tutorial in repo's [README](../README.md) and some more web references, we can write the first[docker-compose rules file](docker-compose.yml.old)
+From tutorial in repo's [README](../README.md) and some more web references, we can write the first [docker-compose rules file](docker-compose.yml.old)
 
 The rules are written to run 2 services (each service represents both previous steps) and expose their ports to the host machine.
 
@@ -29,6 +29,8 @@ the container in background, with:
 ```docker
 docker-compose start
 ```
+
+We can access each service by typing localhost:\<SERVICE_PORT\> in the nav. bar. In our case, `localhost:9000` for the static page, and `localhost:9001` for the dynamic.
 
 The container can be killed with:
 
