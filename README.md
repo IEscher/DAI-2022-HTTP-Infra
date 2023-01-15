@@ -96,7 +96,7 @@ This must output some server's config. in JSON format, and different ones at eac
 
 Here, we will deploy a 1st version of the infrastructure with a static and dynamic web servers (respectively step1 & step2) using Docker compose.
 
-This can be done using the [old docker-compose.yml](docker-images/step3/docker-compose.yml.old).
+This can be done using the [first version of compose rules](docker-images/step3/docker-compose.yml.old).
 
 ### In brief
 
