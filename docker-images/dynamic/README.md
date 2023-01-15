@@ -80,6 +80,14 @@ Will generate <N> server configurations
 
 ## Docker
 
+Let's use a docker container to deploy our application more easily.
+
+The [rules](Dockerfile) create a container using a base image containing a version of nodejs.
+
+Then it copies our [custom files](src/) into the app folder of the container.
+
+Finally, it runs the application using the "CMD" keyword.
+
 ### Container creation
 
 ```shell
@@ -89,8 +97,10 @@ docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_NAME> .
 ### Running container
 
 ```shell
-docker run -p 8080:3000 --rm <TAGGED_IMAGE_NAME>
+docker run -p 9001:3000 --rm <TAGGED_IMAGE_NAME>
 ```
 
 *Note: Port 3000, because it is the default value used by express*
+
+We can access the app using port 9001, instead of its default one (being 3000).
 
