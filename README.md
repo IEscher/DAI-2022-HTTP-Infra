@@ -133,7 +133,7 @@ http://localhost:9001/api # JSON configs
 
 The goal of this step is to run a reverse proxy in front of the dynamic and static Web servers such that the reverse proxy receives all connections and relays them to the respective Web server. 
 
-Using this time, the [docker-compose.yml](docker-images/step3/docker-compose.yml).
+Using this time, the [docker-compose.yml](docker-images/docker-compose.yml).
 
 ### Acceptance criteria
 
