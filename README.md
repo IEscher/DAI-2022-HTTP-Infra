@@ -25,7 +25,7 @@ Except for step1, we both tried to do a version, so one version is in the dedica
 
 ### Acceptance criteria
 
-All steps to dockerfile's rules, create container, launch and access it are described in the [step1's README file](docker-images/step1/README.md)
+All steps to dockerfile's rules, create container, launch and access it are described in the [step1's README file](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step1/docker-images/static/README.md)
 
 The website used this [free bootstrap's template](https://startbootstrap.com/theme/creative).
 
@@ -34,7 +34,7 @@ The website used this [free bootstrap's template](https://startbootstrap.com/the
 
 ### In brief
 
-Change directory to [docker-images/step1](docker-images/step1)
+Change directory to [docker-images/step1](docker-images/static)
 
 In the shell, create container:
 
@@ -60,13 +60,13 @@ http://localhost:9090
 
 ## Step 2: Dynamic HTTP server with express.js
 
-All steps to dockerfile's rules, create container, launch and access it are described in the [step2's README file](docker-images/step2/README.md)
+All steps to dockerfile's rules, create container, launch and access it are described in the [step2's README file](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step2/docker-images/dynamic/README.md)
 
 As asked to do differently (see Step2 section in [statements](Lab5-Statements.md), our generator gives random server's configuration (formatted as JSON, like those used in [our previous lab](https://github.com/KC5-BP/DAI-2022-SMTP-Classe-B/blob/main/config/configServer.json)) as dynamic payloads.
 
 ### In brief
 
-Change directory to [docker-images/step2](docker-images/step2)
+Change directory to [docker-images/step2](docker-images/dynamic)
 
 In the shell, create container:
 
