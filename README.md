@@ -150,7 +150,7 @@ http://localhost/api
 
 That must result with the same behavior as the previous section.
 
-We can access Traefik's dashboard through: `localhost:8999` to see the services status.
+Plus, we can access Traefik's dashboard through: `localhost:8999` to see the services status.
 
 ## Step 3a: Dynamic cluster management
 
@@ -173,7 +173,7 @@ Add the `deploy` section to a service in the docker-compose.yml, like:
             replicas: 3
 ```
 
-That will launch 3 instances of the static server. It can be verified through Traefik's dashboard.
+That will launch 3 instances of the static server.
 
 #### Using CLI argument
 
@@ -186,6 +186,8 @@ docker-compose up -d --scale static=3
 This will have the same effect that using the replicas rules.
 
 *Reminder: -d flag launch the up cmd in background*
+
+Both can be verified through Traefik's dashboard.
 
 ## Step 4: AJAX requests with JQuery
 
