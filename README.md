@@ -18,6 +18,7 @@ For further explanations, please refer to [Lab5' statements file](Lab5-Statement
 ### Note
 
 A dedicated branch has been made for each step of the laboratory. Doing so, it allows us to easily test each step separately.
+In each of these branches are also README.md files that explain the step in more detail.
 
 The main branch is a copy of the 6th step, but containing the report as main README.
 
@@ -190,6 +191,28 @@ The goal of the step is to use AJAX requests to dynamically update a Web page ev
 
 Note: in the webcast we introduce you to JQuery, but you can also use the more modern [JavaScript Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to easily make AJAX requests.
 
+### In brief
+
+The static server will query the dynamic server every 2 seconds using the fetch API.
+
+```javascript
+function getDynamicResponse() {
+    fetch('http://localhost/api')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(JSON.stringify(data));
+            let message = "";
+            if (data.length > 0) {
+                message = JSON.stringify(data, null, 4);
+                document.getElementsByClassName("dynamic-content").item(0).innerHTML
+                    = "<pre>" + message + "</pre>";
+            }
+        });
+}
+```
+
+To launch the servers, please refer to the step 3 instructions.
+
 ## Step 5: Load balancing: round-robin and sticky sessions
 
 By default, Traefik uses Round Robin to distribute the load among all available instances. However, if a service is stateful, it would be better to send requests of the same session always to the same instance. This is called sticky sessions.
@@ -198,6 +221,34 @@ The goal of this step is to change the configuration such that:
 
 * Traefik uses sticky session for the static Web server instances
 * Traefik continues to use round robin for the dynamic servers (no change required)
+
+### In brief
+
+To establish sticky sessions, we need to add the `traefik.http.routers.<SERVICE_NAME>.sticky` rule to the service in the docker-compose.yml, like:
+
+```docker
+        labels:
+            
+            # ...
+            
+            # sticky session
+            - traefik.http.services.static.loadbalancer.sticky.cookie=true
+            - traefik.http.services.static.loadbalancer.sticky.cookie.name=static-cookie
+```
+
+This will tell Traefik to use sticky sessions for the service.
+
+To prove that the sticky sessions are enabled, we also added 3 whoami to a total of 3 static, 3 dynamic and 3 whoami services.
+The static service and the whoami service have sticky sessions enabled, and the dynamic service has not. 
+
+![Example](./docker-images/pics/example.png)
+
+The Session hostname is the name of the whoami container that is serving the request. Below, just above the configs, is
+the "Dynamic_server" field with its host name. We can see that the session hostname is the same for the same session, 
+but the dynamic one alternates between 3 hostname in a round-robin way. This proves that the whoami service has sticky 
+sessions enabled, and the dynamic service has not.
+
+To launch the servers, please refer to the step 3 instructions.
 
 ## Step 6: Management UI
 
