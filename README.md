@@ -1,7 +1,7 @@
 
 # STEP 1: Static HTTP server with apache httpd
 
-## Reference
+## Reference(s)
 
 ### What will be done
 
