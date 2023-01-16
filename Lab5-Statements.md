@@ -24,7 +24,7 @@ The third objective is to practice our usage of **Docker**. All the components o
 * Please create one directory or one branch per step so it will be easier for us to correct your work.
 
 
-##<a name="step1"></a> Step 1: Static HTTP server with apache httpd
+## Step 1: Static HTTP server with apache httpd
 
 ### Webcasts
 
