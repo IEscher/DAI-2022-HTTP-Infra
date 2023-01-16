@@ -5,7 +5,7 @@
 
 ### What will be done
 
-* [Step1's statement](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/main/Lab5-Statements.md#step-1-static-http-server-with-apache-httpd)
+* [Step1' statement](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/main/Lab5-Statements.md#step-1-static-http-server-with-apache-httpd)
 
 ### Webcast
 
