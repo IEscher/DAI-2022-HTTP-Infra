@@ -13,3 +13,8 @@ There are two options for this step:
 
 * You can do a demo to show the Management UI and manage the containers of your infrastructure.
 * You have **documented** your configuration in your report.
+
+### In-depth
+
+See [dedicated README](docker-images/README.md)
+
