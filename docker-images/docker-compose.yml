@@ -3,7 +3,7 @@ version: "3.9"
 services:
     # ******************************* #
     static:
-        build: ./static/.
+        build: static/.
         ports:
             #- "9001:80"
             - "80"
@@ -15,7 +15,7 @@ services:
 
     # ******************************* #
     dynamic:
-        build: ./dynamic/.
+        build: dynamic/.
         ports:
             #- "9002:3000"
             - "3000"

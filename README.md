@@ -17,7 +17,7 @@ The main difference between docker run and docker compose is that:
 - docker compose: read a configuration file (in a YAML format)
     - Compose's rules can be made from created Dockerfile. This is great knowing that we write some for previous steps.
 
-From tutorial in repo's [README](../README.md) and some more web references, we can write the first [docker-compose rules file](docker-compose.yml.old)
+From tutorial in original repo's [README](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/main/Lab5-Statements.md#step-3-reverse-proxy-with-traefik) and some more web references, we can write the first [docker-compose rules](docker-images/docker-compose.yml.old)
 
 The rules are written to run 2 services (each service represents both previous steps) and expose their ports to the host machine.
 
@@ -38,7 +38,7 @@ the container in background, with:
 docker-compose start
 ```
 
-We can access each service by typing localhost:\<SERVICE_PORT\> in the nav. bar. In our case, `localhost:9000` for the static page, and `localhost:9001` for the dynamic.
+We can access each service by typing localhost:\<SERVICE_PORT\> in the nav. bar. In our case, `localhost:9001` for the static page, and `localhost:9002` for the dynamic.
 
 The container can be killed with:
 
@@ -50,7 +50,7 @@ docker-compose kill
 
 ## 2nd part: Launching pages using a reverse proxy
 
-Using the service Traefik and by adding its part in the [compose rules](docker-compose.yml), it is now possible to access the static page by typing [localhost](http://localhost) and [localhost/api](http://localhost/api) for the dynamic one, in the nav. bar of the broswer of your choice.
+Using the service Traefik and by adding its part in the [compose rules](docker-images/docker-compose.yml), it is now possible to access the static page by typing [localhost](http://localhost) and [localhost/api](http://localhost/api) for the dynamic one, in the nav. bar of the broswer of your choice.
 
 ## 3rd part: Multiple instances
 
@@ -60,7 +60,7 @@ To launch multiple instances of a service, it can be done with the cmd:
 docker-compose up --scale <SERVICE_NAME>=<N_INSTANCES>
 ```
 
-Ex. we wrote a service ```static``` in [docker-compose.yml](docker-compose.yml):
+Ex. we wrote a service `static` in [docker-compose.yml](docker-compose.yml):
 
 ```docker
 # Launch 3 instances of the static service (see step1)
