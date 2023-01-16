@@ -150,6 +150,8 @@ http://localhost/api
 
 That must result with the same behavior as the previous section.
 
+We can access Traefik's dashboard through: `localhost:8999` to see the services status.
+
 ## Step 3a: Dynamic cluster management
 
 The goal of this section is to allow Traefik to dynamically detect several instances of the (dynamic/static) Web servers. You may have already done this in the previous step 3.
@@ -171,7 +173,7 @@ Add the `deploy` section to a service in the docker-compose.yml, like:
             replicas: 3
 ```
 
-That will launch 3 instances of the static server.
+That will launch 3 instances of the static server. It can be verified through Traefik's dashboard.
 
 #### Using CLI argument
 
