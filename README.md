@@ -94,7 +94,7 @@ Here, we will deploy a 1st version of the infrastructure with a static and dynam
 
 All steps to dockerfile's rules and more detailed informations are described in the [step3's README file](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step3/README.md).
 
-This can be done using the [first version of compose rules](docker-images/docker-compose.yml.old).
+This can be done using the [first version of compose rules]([docker-images/docker-compose.yml.old](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step3/docker-images/docker-compose.yml.old).
 
 ### In brief
 
@@ -131,7 +131,7 @@ http://localhost:9002/api # JSON configs
 
 The goal of this step is to run a reverse proxy in front of the dynamic and static Web servers such that the reverse proxy receives all connections and relays them to the respective Web server. 
 
-Using this time, the [docker-compose.yml](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step3/docker-images/docker-compose.yml.old).
+Using this time, the [docker-compose.yml](docker-images/docker-compose.yml.old).
 
 ### In brief
 
