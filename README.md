@@ -5,6 +5,12 @@
 
 - Cmds might need to be ran as sudo/admin
 
+## Reference(s)
+
+### What will be done
+
+* [Step2' statement](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/main/Lab5-Statements.md#step-2-dynamic-http-server-with-expressjs)
+
 ## Nodejs + Express application
 
 On step1, we used an html page (static version). Let's use a more dynamic approach through a nodejs + express application, with a ["index.js"](src/index.js) file.
