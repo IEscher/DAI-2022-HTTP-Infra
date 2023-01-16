@@ -20,7 +20,7 @@ Starting by launching containers:
 docker-compose up -d --build
 ```
 
-Now, Portainer' service is accessible through a browser, by reaching [localhost:9000](http://localhost:9000)
+Now, Portainer' service is accessible through a browser, by reaching [localhost:9000](http://localhost:9000) (port defined in compose rules).
 
 First, it asks for a login:
 
