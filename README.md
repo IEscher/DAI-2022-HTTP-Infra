@@ -41,7 +41,7 @@ Dependencies can then be seen in the [node_modules/](src/node_modules) folder
 
 ### Test app
 
-Run it in local with:
+Run [it](docker-images/dynamic/src/index.js) in local with:
 
 ```shell
 npm index.js
@@ -50,7 +50,7 @@ npm index.js
 And then connect to it with telnet:
 
 ```shell
-telnet localhost 3000
+telnet localhost 3000 # 3000 Default port for Express
 ```
 
 And type cmd: 
@@ -88,9 +88,9 @@ Will generate <N> server configurations
 
 Let's use a docker container to deploy our application more easily.
 
-The [rules](Dockerfile) create a container using a base image containing a version of nodejs.
+The [rules](docker-images/dynamic/Dockerfile) create a container using a base image containing a version of nodejs.
 
-Then it copies our [custom files](src/) into the app folder of the container.
+Then it copies our [custom files](docker-images/dynamic/src/) into the app folder of the container.
 
 Finally, it runs the application using the "CMD" keyword.
 
@@ -108,5 +108,7 @@ docker run -p 9001:3000 --rm <TAGGED_IMAGE_NAME>
 
 *Note: Port 3000, because it is the default value used by express*
 
-We can access the app using port 9001, instead of its default one (being 3000).
+We can access the app using port 9002, instead of its default one (being 3000).
+
+We can see graphically the output, with a browser, by reaching [localhost:9002](http://localhost:9002)
 
