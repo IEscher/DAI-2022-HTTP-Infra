@@ -32,7 +32,7 @@ This configuration will then be set in a `portainer-data/` folder. We haven't co
 
 So feel free to delete the [.gitignore](.gitignore) if you're copying the project and need to share datas throughout the repo. .
 
-\
+
 
 After login phase passed, it is possible to see which services are actually running.
 
