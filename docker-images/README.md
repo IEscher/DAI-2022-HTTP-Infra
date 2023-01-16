@@ -10,7 +10,7 @@
 
 ## Implementation
 
-With the last reference, we add the rules to launch a Portainer service to the [docker-compose.yml](docker-images/docker-compose.yml).
+With the last reference, we add the rules to launch a Portainer service to the [docker-compose.yml](docker-compose.yml).
 
 ## Usage
 
