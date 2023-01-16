@@ -30,10 +30,10 @@ The [Dockerfile](docker-images/static/Dockerfile) create a container image based
 
 ```shell
 # Run (/Create if not existant) container
-docker run -d -p 9000:80 php:7.2-apache
+docker run -d -p 9001:80 php:7.2-apache
 
 # And by naming it
-docker run -d -p 9000:80 --name <CONTAINER_IMAGE_NAME> php:7.2-apache
+docker run -d -p 9001:80 --name <CONTAINER_IMAGE_NAME> php:7.2-apache
 ```
 
 **Flags:**
@@ -57,6 +57,8 @@ With an output, like:
 CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                                   NAMES
 9187753936d4   php:7.2-apache   "docker-php-entrypoi…"   10 minutes ago   Up 10 minutes   0.0.0.0:9000->80/tcp, :::9090->80/tcp   amazing_noyce
 ```
+
+We can then access the page by reaching the [localhost:9001](http://localhost:9001) link in a browser.
 
 ### Image structure exploration
 
@@ -92,11 +94,13 @@ docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_TAG> .
 And then run it with:
 
 ```shell
-docker run -p 9000:80 --rm <TAGGED_IMAGE_NAME>
+docker run -p 9001:80 --rm <TAGGED_IMAGE_NAME>
 ```
 
 **Flags:**
 
 - -t, --tag : Give  the container a tag, instead of a name, you choose the better for you ;)
 - --rm : Remove ressources used between the container and the host machine properly
+
+And still getting access through [localhost:9001](http://localhost:9001) in a browser, like previously.
 
