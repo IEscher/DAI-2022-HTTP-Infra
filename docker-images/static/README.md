@@ -3,6 +3,10 @@
 
 ## Reference
 
+### Criteria
+
+* [Ask for the lab](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/main/Lab5-Statements.md#step1)
+
 ### Webcast
 
 * [Labo HTTP (1): Serveur apache httpd "dockerisé" servant du contenu statique](https://www.youtube.com/watch?v=XFO4OmcfI3U)
