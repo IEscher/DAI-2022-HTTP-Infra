@@ -3,7 +3,7 @@ version: "3.9"
 services:
     # ******************************* #
     static:
-        build: ./static/.
+        build: static/.
         #container_name: dai_http_step1
         ports:
             #- "9001:80"
@@ -16,7 +16,7 @@ services:
 
     # ******************************* #
     dynamic:
-        build: ./dynamic/.
+        build: dynamic/.
         #container_name: dai_http_step2
         ports:
             #- "9002:3000"
