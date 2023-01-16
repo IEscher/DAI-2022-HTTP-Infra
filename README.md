@@ -60,14 +60,14 @@ To launch multiple instances of a service, it can be done with the cmd:
 docker-compose up --scale <SERVICE_NAME>=<N_INSTANCES>
 ```
 
-Ex. we wrote a service `static` in [docker-compose.yml](docker-compose.yml):
+Ex. we wrote a service `static` in [docker-compose.yml](docker-images/docker-compose.yml):
 
 ```docker
 # Launch 3 instances of the static service (see step1)
 docker-compose up -d --scale static=3
 ```
 
-To check the IPs of the different instances, we need to reach the Traefik dashboard at [localhost:9000](http://localhost:9000) (9000 because we remap port 8080 on 9000 in the [docker-compose rules](docker-compose.yml) file.
+To check the IPs of the different instances, we need to reach the Traefik dashboard at [localhost:9000](http://localhost:9000) (9000 because we remap port 8080 on 9000 in the [docker-compose rules](docker-images/docker-compose.yml) file.
 
 Then reach: HTTP > Services, we have then a dashboard like:
 
