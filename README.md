@@ -34,7 +34,12 @@ With a browser, it is now possible to access the static page by typing [localhos
 
 ## Round-robin and sticky sessions
 
+**Round-robin** is a way to dispatch the request amongst all the servers. Each server is called one after the other without
+ever-changing their order. It is as if the servers are placed in a circular buffer. If there is 3 server, they will be 
+called in the following order: 1-2-3-1-2-3-1-2-3-1-...
 
+**Sticky session** are used by the load balancer to connect the client to a specific server. This is necessary for an 
+applications that stores information on a specific server only and thus, need to connect each time on the same server.
 
 ## Modifications
 
