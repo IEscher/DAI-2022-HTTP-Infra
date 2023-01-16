@@ -37,7 +37,7 @@ services:
             #--entryPoints.dynamic_server.address=:9002
         ports:
             - "80:80"       # The HTTP port
-            - "9000:8080"   # The Web UI (enabled by --api.insecure=true)
+            - "8999:8080"   # The Web UI (enabled by --api.insecure=true)
             #- "9001:80"     # Static
             #- "9002:3000"   # Dynamic
         volumes:
