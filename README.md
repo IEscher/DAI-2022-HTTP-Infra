@@ -28,7 +28,7 @@ docker-compose stop
 docker-compose kill 
 ```
 
-## Acessing page
+## Accessing page
 
 With a browser, it is now possible to access the static page by typing [localhost](http://localhost) in the nav. bar.
 
