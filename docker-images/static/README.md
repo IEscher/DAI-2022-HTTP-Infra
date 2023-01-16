@@ -5,7 +5,7 @@
 
 ### Criteria
 
-* [Ask for the lab](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/main/Lab5-Statements.md#step1)
+* [Ask for the lab](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/main/Lab5-Statements.md#step-1-static-http-server-with-apache-httpd)
 
 ### Webcast
 
