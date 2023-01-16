@@ -13,24 +13,19 @@ The second objective is to implement a simple, yet complete, **dynamic web appli
 
 The third objective is to practice our usage of **Docker**. All the components of the web infrastructure will be packaged in custom Docker images (we will create at least 3 different images). We will also use **Docker compose** to define a complete infrastructure with several components.
 
-For further explanations, please refer to [Lab5' statements file](Lab5-Statements.md).
+For further explanations, please refer to [Lab5' statements file](Lab5-Statements.md) (the original README).
 
 ### Note
 
-A dedicated branch has been made for each step of the laboratory. Doing so, it allows us to easily test each step separately. 
-
-Except for step1, we both tried to do a version, so one version is in the dedicated branch, the other (and the one finally used) is in the step2's branch.
+A dedicated branch has been made for each step of the laboratory. Doing so, it allows us to easily test each step separately.
 
 ## Step 1: Static HTTP server with apache httpd
 
 ### Acceptance criteria
 
-All steps to dockerfile's rules, create container, launch and access it are described in the [step1's README file](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step1/docker-images/static/README.md)
+All steps to dockerfile's rules, create container, launch and access it are described in the [step1's README](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step1/README.md)
 
 The website used this [free bootstrap's template](https://startbootstrap.com/theme/creative).
-
-* You are able to show where the apache config files are located (in a running container).
-* You have **documented** your configuration in your report.
 
 ### In brief
 
