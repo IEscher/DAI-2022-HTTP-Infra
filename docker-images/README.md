@@ -22,6 +22,8 @@ docker-compose up -d --build
 
 Now, Portainer' service is accessible through a browser, by reaching [localhost:9000](http://localhost:9000) (port defined in compose rules).
 
+### Login
+
 First, it asks for a login:
 
 ![pic-portainer-login](pics/portainer-1stLogin.png)
@@ -32,7 +34,7 @@ This configuration will then be set in a `portainer-data/` folder. We haven't co
 
 So feel free to delete the [.gitignore](.gitignore) if you're copying the project and need to share datas throughout the repo. .
 
-<br></br>
+### Listing containers
 
 After login phase passed, it is possible to see which services are actually running.
 
@@ -45,5 +47,9 @@ You'll reach a page listing infos, so reach the `Containers` to see various cont
 Let's order them by creation date:
 
 ![pic-portainer-containers](pics/portainer0-atStart.png)
+
+We can also see them on the [Traefik services section](http://localhost:8999/dashboard/#/http/services):
+
+![pic-traefik-containers](pics/traefik0-atStart.png)
 
 
