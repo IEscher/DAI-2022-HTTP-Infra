@@ -37,7 +37,7 @@ npm install express
 
 *Note: Add **--save** flag to make a permanent installation of the pkg on your machine*
 
-Dependencies can then be seen in the [node_modules/](src/node_modules) folder
+Dependencies can then be seen in the [node_modules/](docker-images/dynamic/src/node_modules) folder
 
 ### Test app
 
