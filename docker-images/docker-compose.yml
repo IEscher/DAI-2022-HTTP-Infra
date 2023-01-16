@@ -1,0 +1,88 @@
+
+version: "3.9"
+
+services:
+    # ******************************* #
+    static:
+        build: static/.
+        deploy:
+            replicas: 3
+        ports:
+            - "80"
+        labels:
+            - traefik.autodetect=true
+            #router: static
+            - traefik.http.routers.static.rule=Host(`localhost`)
+            #- traefik.http.routers.static.entryPoints=static_server
+            # sticky session
+            - traefik.http.services.static.loadbalancer.sticky.cookie=true
+            - traefik.http.services.static.loadbalancer.sticky.cookie.name=static-cookie
+
+    # ******************************* #
+    dynamic:
+        build: dynamic/.
+        deploy:
+            replicas: 3
+        ports:
+            - "3000"
+        labels:
+            - traefik.autodetect=true
+            #router: dynamic
+            - traefik.http.routers.dynamic.rule=(Host(`localhost`) && PathPrefix(`/api`))
+            #- traefik.http.routers.dynamic.entryPoints=dynamic_server
+
+    # ******************************* #
+    whoami:
+    # A service that exposes an API to show its IP address
+        image: traefik/whoami
+        deploy:
+            replicas: 3
+        labels:
+            - traefik.autodetect=true
+            - traefik.http.routers.whoami.rule=(Host(`localhost`) && PathPrefix(`/ip`))
+            # sticky session
+            - traefik.http.services.whoami.loadbalancer.sticky.cookie=true
+            - traefik.http.services.whoami.loadbalancer.sticky.cookie.name=whoami-cookie
+
+    # ******************************* #
+    # Ref: https://jacar.es/en/como-instalar-portainer-con-docker-compose/
+    portainer:
+        image: portainer/portainer-ce:latest
+        #container_name: portainer
+        restart: unless-stopped
+        security_opt:
+            - no-new-privileges:true
+        volumes:
+          - /etc/localtime:/etc/localtime:ro
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+          - ./portainer-data:/data
+        ports:
+            - 9000:9000
+        ### OPTIONAL (To debug though to enable localhost/ui) ###
+        #labels:
+            #- traefik.autodetect=true
+            #router: portainer
+            #- traefik.http.routers.portainer.rule=(Host(`localhost`) && PathPrefix(`/ui`))
+            #- "traefik.http.routers.portainer.middlewares=portainer-stripprefix"
+            #- "traefik.http.middlewares.portainer-stripprefix.stripprefix.prefixes=/ui"
+            #- "traefik.http.services.portainer.loadbalancer.server.port=9000"
+            #- traefik.http.routers.portainer.entryPoints=portainer_server
+        #command: --no-auth
+        #environment:
+          #- PUID=1000
+          #- PGID=1000
+        ################
+
+    # ******************************* #
+    reverse-proxy:
+        # The official v2 Traefik docker image
+        image: traefik:v2.9
+        # Enables the web UI and tells Traefik to listen to docker
+        command: --api.insecure=true --providers.docker
+        ports:
+            - "80:80"       # The HTTP port
+            - "8999:8080"   # The Web UI (enabled by --api.insecure=true)
+        volumes:
+            # So that Traefik can listen to the Docker events
+            - /var/run/docker.sock:/var/run/docker.sock
+
