@@ -52,4 +52,45 @@ We can also see them on the [Traefik services section](http://localhost:8999/das
 
 ![pic-traefik-containers](pics/traefik0-atStart.png)
 
+### Operations
+
+#### Stop
+
+Let's start the demo., by stopping the static server:
+
+On Portainer:
+
+![pic-portainer-stopped-static](pics/portainer1-stoppedStatic.png)
+
+On Traefik:
+
+![pic-traefik-stopped-static](pics/traefik1-stoppedStatic.png)
+
+#### Duplicate
+
+Let's the duplication:
+
+On Portainer:
+
+![pic-portainer-duplicated-static](pics/portainer2-duplicatedStatic.png)
+
+**Remark: /!\ A WARNING can be obtained if you don't change the container's name /!\ .**
+
+So look at your name before reporting any issue.
+
+On Traefik:
+
+![pic-traefik-duplicated-static](pics/traefik2-duplicatedStatic.png)
+
+Both services offer us to see the access IP & port.
+
+But Traefik gives us the full path, so let's be lazy here:
+
+![pic-traefik-duplicated-static](pics/traefik2-servicesAccesses.png)
+
+#### Kill on CLI
+
+We will see that killing the composer through the CLI kills every instances, duplicated ones as well:
+
+![pic-traefik-duplicated-static](pics/cli0-stoppedDuplicatedAsWell.png)
 
