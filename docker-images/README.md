@@ -30,7 +30,7 @@ Define your credentials.
 
 This configuration will then be set in a `portainer-data/` folder. We haven't committed it in the repo. , for security reasons obviously.
 
-So feel free to delete the [.gitignore](docker-images) if you're copying the project and need to share datas throughout the repo. .
+So feel free to delete the [.gitignore](.gitignore) if you're copying the project and need to share datas throughout the repo. .
 
 After login phase passed, it is possible to see which services are actually running.
 
