@@ -5,6 +5,8 @@ services:
     # ******************************* #
     static:
         build: static/.
+        deploy:
+            replicas: 3
         ports:
             - "80"
         labels:
@@ -12,10 +14,15 @@ services:
             #router: static
             - traefik.http.routers.static.rule=Host(`localhost`)
             #- traefik.http.routers.static.entryPoints=static_server
+            # sticky session
+            - traefik.http.services.static.loadbalancer.sticky.cookie=true
+            - traefik.http.services.static.loadbalancer.sticky.cookie.name=static-cookie
 
     # ******************************* #
     dynamic:
         build: dynamic/.
+        deploy:
+            replicas: 3
         ports:
             - "3000"
         labels:
@@ -23,6 +30,19 @@ services:
             #router: dynamic
             - traefik.http.routers.dynamic.rule=(Host(`localhost`) && PathPrefix(`/api`))
             #- traefik.http.routers.dynamic.entryPoints=dynamic_server
+
+    # ******************************* #
+    whoami:
+    # A service that exposes an API to show its IP address
+        image: traefik/whoami
+        deploy:
+            replicas: 3
+        labels:
+            - traefik.autodetect=true
+            - traefik.http.routers.whoami.rule=(Host(`localhost`) && PathPrefix(`/ip`))
+            # sticky session
+            - traefik.http.services.whoami.loadbalancer.sticky.cookie=true
+            - traefik.http.services.whoami.loadbalancer.sticky.cookie.name=whoami-cookie
 
     # ******************************* #
     # Ref: https://jacar.es/en/como-instalar-portainer-con-docker-compose/
