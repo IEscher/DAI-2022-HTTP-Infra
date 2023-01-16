@@ -24,7 +24,7 @@ Now, Portainer' service is accessible through a browser, by reaching [localhost:
 
 First, it asks for a login:
 
-![pic-portainer-login](pics/)
+![pic-portainer-login](pics/portainer-1stLogin.png)
 
 Define your credentials.
 
@@ -34,11 +34,11 @@ So feel free to delete the [.gitignore](.gitignore) if you're copying the projec
 
 After login phase passed, it is possible to see which services are actually running.
 
-On the dashboard, reach the local section that is displaying on the screen:
+Go to Home \> Dashboard, reach the local section that is displaying on the screen:
 
-![pic-portainer-dashboard](pics/)
+![pic-portainer-dashboard](pics/portainer-dashboard.png)
 
-You'll reach a page listing various container that the service detected on your machine.
+You'll reach a page listing infos, so reach the `Containers` to see various containers that the service detected on your machine.
 
 Let's order them by creation date:
 
