@@ -256,10 +256,11 @@ To launch the servers, please refer to the step 3 instructions.
 
 ## Step 6: Management UI
 
+The dedicated README is [here](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step6-ui/README.md).
+
 The goal of this step is to deploy or develop a Web app that can be used to monitor and update your Web infrastructure dynamically. You should be able to list running containers, start/stop them and add/remove instances.
 
-There are two options for this step:
+The solution used is through Portainer.
 
-* you use an existing solution (search on Google)
-* you develop your own Web app (e.g. with express.js). In this case, you can use the Dockerode npm module (or another Docker client library, in any of the supported languages) to access the docker API.
+Exploring the step6's README, it is explained how to use the service and the container's management.
 
