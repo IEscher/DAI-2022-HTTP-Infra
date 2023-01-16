@@ -19,19 +19,21 @@ For further explanations, please refer to [Lab5' statements file](Lab5-Statement
 
 A dedicated branch has been made for each step of the laboratory. Doing so, it allows us to easily test each step separately.
 
+The main branch is a copy of the 6th step, but containing the report as main README.
+
 ## Step 1: Static HTTP server with apache httpd
 
 ### Acceptance criteria
 
-All steps to dockerfile's rules, create container, launch and access it are described in the [step1's README](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step1/README.md)
+All steps to dockerfile's rules, create container, launch and access it are described in the [step1's README](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step1/README.md).
 
-The website used this [free bootstrap's template](https://startbootstrap.com/theme/creative).
+The static page uses this [free bootstrap's template](https://startbootstrap.com/theme/creative).
 
 ### In brief
 
-Change directory to [docker-images/step1](docker-images/static)
+Change directory to [docker-images/static](docker-images/static)
 
-In the shell, create container:
+In the shell, create the container:
 
 ```shell
 docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_NAME> .
@@ -42,31 +44,30 @@ docker build --tag dai/http_step1 .
 Run it:
 
 ```shell
-docker run -p 9090:80 --rm <TAGGED_IMAGE_NAME>
+docker run -p 9001:80 --rm <TAGGED_IMAGE_NAME>
 # With tagged container
-docker run -p 9090:80 --rm dai/http_step1
+docker run -p 9001:80 --rm dai/http_step1
 ```
 
 With a browser, access it by typing in the nav. bar:
 
 ```shell
-http://localhost:9090
+http://localhost:9001
 ```
 
 ## Step 2: Dynamic HTTP server with express.js
 
-All steps to dockerfile's rules, create container, launch and access it are described in the [step2's README file](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step2/docker-images/dynamic/README.md)
+All steps to dockerfile's rules, create container, launch and access it are described in the [step2's README file](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step2/README.md).
 
-As asked to do differently (see Step2 section in [statements](Lab5-Statements.md), our generator gives random server's configuration (formatted as JSON, like those used in [our previous lab](https://github.com/KC5-BP/DAI-2022-SMTP-Classe-B/blob/main/config/configServer.json)) as dynamic payloads.
+As asked to do differently (see [Step2 section in statements](Lab5-Statements.md#acceptance-criteria-1), our generator gives random server's configuration (formatted as JSON, like those used in [our previous lab](https://github.com/KC5-BP/DAI-2022-SMTP-Classe-B/blob/main/config/configServer.json)) as dynamic payloads.
 
 ### In brief
 
-Change directory to [docker-images/step2](docker-images/dynamic)
+Change directory to [docker-images/dynamic](docker-images/dynamic)
 
 In the shell, create container:
 
 ```shell
-docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_NAME> .
 # Here's a friendly tag again ^^
 docker build --tag dai/http_step2 .
 ```
@@ -74,15 +75,15 @@ docker build --tag dai/http_step2 .
 Run it:
 
 ```shell
-docker run -p 8080:3000 --rm <TAGGED_IMAGE_NAME>
+docker run -p 9002:3000 --rm <TAGGED_IMAGE_NAME>
 # With tagged container
-docker run -p 8080:3000 --rm dai/http_step2
+docker run -p 9002:3000 --rm dai/http_step2
 ```
 
 With a browser, access it by typing in the nav. bar:
 
 ```shell
-http://localhost:8080
+http://localhost:9002
 ```
 
 This must output some server's config. in JSON format, and different ones at each page reload.
@@ -90,6 +91,8 @@ This must output some server's config. in JSON format, and different ones at eac
 ## Step 3: Docker compose to build the infrastructure
 
 Here, we will deploy a 1st version of the infrastructure with a static and dynamic web servers (respectively step1 & step2) using Docker compose.
+
+All steps to dockerfile's rules and more detailed informations are described in the [step3's README file](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step3/README.md).
 
 This can be done using the [first version of compose rules](docker-images/docker-compose.yml.old).
 
@@ -104,10 +107,10 @@ docker-compose build
 Then, start them:
 
 ```shell
-# To build (optional) and run, but this will monopolize the shell
-docker-compose up [--build]
+# To build and run in background [-d] (optional), but this will monopolize the shell without the "-d" flag
+docker-compose up [-d] [--build]
 
-# To run in background
+# To run easily in background
 docker-compose start
 ```
 
@@ -115,11 +118,11 @@ We can visit the services through a browser by typing in the nav. bar:
 
 ```shell
 # Accessing static
-http://localhost:9000
+http://localhost:9001
 
 # Accessing dynamic
-http://localhost:9001 # '/' being the default will tell that you'll have better chance with '/api' (kept because of the following part)
-http://localhost:9001/api # JSON configs
+http://localhost:9002 # '/' being the default will tell that you'll have better chance with '/api' (kept because of the following part)
+http://localhost:9002/api # JSON configs
 ```
 
 *Note: Might need to clear "Form & search history" to avoid auto-completion of a suggested page*
