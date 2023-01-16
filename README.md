@@ -57,6 +57,8 @@ And type cmd:
 
 ```shell
 GET / HTTP/1.0
+# Or '/test', because it is a statement that has been tested too
+GET /test HTTP/1.0
 ```
 
 It must result in the application returning server configuration, like:
@@ -110,5 +112,5 @@ docker run -p 9001:3000 --rm <TAGGED_IMAGE_NAME>
 
 We can access the app using port 9002, instead of its default one (being 3000).
 
-We can see graphically the output, with a browser, by reaching [localhost:9002](http://localhost:9002)
+We can see graphically the output, with a browser, by reaching [localhost:9002](http://localhost:9002) or the test statement[localhost:9002/test](http://localhost:9002/test)
 
