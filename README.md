@@ -1,5 +1,10 @@
 # Labo HTTP Infra
 
+## Authors
+
+- Ian Escher
+- Kévin Bougnon-Peigne
+
 ## Objectives
 
 The first objective of this lab is to get familiar with software tools that will allow us to build a **complete web infrastructure**. By that, we mean that we will build an environment that will allow us to serve **static and dynamic content** to web browsers. To do that, we will see how to configure a **Web server** and a **reverse proxy**. We will also see that **express.js** is a JavaScript framework that makes it very easy to write dynamic web apps.
@@ -8,90 +13,127 @@ The second objective is to implement a simple, yet complete, **dynamic web appli
 
 The third objective is to practice our usage of **Docker**. All the components of the web infrastructure will be packaged in custom Docker images (we will create at least 3 different images). We will also use **Docker compose** to define a complete infrastructure with several components.
 
-## General instructions
-
-* This is a **BIG** lab and you will need a lot of time to complete it. 
-* We have prepared webcasts for a big portion of the lab.
-* Be aware that the webcasts have been recorded in 2016. There is no change in the list of tasks to be done, but of course **there are some differences in the details**. For instance, the Docker images that we use to implement the solution have changed a bit and you will need to do **some adjustments to the scripts**. This is part of the work and we ask you to document what the required adaptations in your report.
-* The webcasts present one solution. Feeling adventurous and want to propose another one (for instance, by using Django or Deno instead of express.js)? Go ahead, we **LOVE** that. Make sure to document your choices in the report. If you are not sure if your choice is compatible with the list of acceptance criteria? Reach out to the teaching team. **Learning to discuss requirements with a "customer"** (even if this one pays you with a grade and not with money) is part of the process!
-* For certain steps you will need to do research in the documentation by yourself (we are here to help, but we will not give you step-by-step instructions!) or you will need to be creative (do not expect complete guidelines).
-* The lab can be done in **groups of 2 students**. You will learn very important skills and tools, which you will need to next year's courses. You cannot afford to skip this content if you want to survive next year. Essentially, this means that it's a pretty bad idea to only have one person in the group doing the job...
-* Read carefully all the **acceptance criteria**.
-* We will request demos as needed. When you do your **demo**, be prepared to that you can go through the procedure quickly (there are a lot of solutions to evaluate!)
-* **You have to write a report. Please do that directly in the repo, in one or more markdown files. Start in the README.md file at the root of your directory.**
-* The report must contain the procedure that you have followed to prove that your configuration is correct (what you would do if you were doing a demo).
-* Check out the **due dates** on the main repo for the course.
-* Please create one directory or one branch per step so it will be easier for us to correct your work.
-
-
-## Step 1: Static HTTP server with apache httpd
-
-### Webcasts
-
-* [Labo HTTP (1): Serveur apache httpd "dockerisé" servant du contenu statique](https://www.youtube.com/watch?v=XFO4OmcfI3U)
+For further explanations, please refer to [Lab5' statements file](Lab5-Statements.md).
 
 ### Note
 
-* You will probably have trouble to use PHP 8 with Apache, we recommend using PHP 7 instead.
+A dedicated branch has been made for each step of the laboratory. Doing so, it allows us to easily test each step separately. 
+
+Except for step1, we both tried to do a version, so one version is in the dedicated branch, the other (and the one finally used) is in the step2's branch.
+
+## Step 1: Static HTTP server with apache httpd
 
 ### Acceptance criteria
 
-* You have a GitHub repo with everything needed to build the Docker image.
-* You can do a demo, where you build the image, run a container and access content from a browser.
-* You have used a nice looking web template, different from the one shown in the webcast.
-* You are able to explain what you do in the Dockerfile.
+All steps to dockerfile's rules, create container, launch and access it are described in the [step1's README file](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step1/docker-images/static/README.md)
+
+The website used this [free bootstrap's template](https://startbootstrap.com/theme/creative).
+
 * You are able to show where the apache config files are located (in a running container).
 * You have **documented** your configuration in your report.
 
+### In brief
+
+Change directory to [docker-images/step1](docker-images/static)
+
+In the shell, create container:
+
+```shell
+docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_NAME> .
+# Here's a tag if you don't have one easily :D
+docker build --tag dai/http_step1 .
+```
+
+Run it:
+
+```shell
+docker run -p 9090:80 --rm <TAGGED_IMAGE_NAME>
+# With tagged container
+docker run -p 9090:80 --rm dai/http_step1
+```
+
+With a browser, access it by typing in the nav. bar:
+
+```shell
+http://localhost:9090
+```
+
 ## Step 2: Dynamic HTTP server with express.js
 
-### Webcasts
+All steps to dockerfile's rules, create container, launch and access it are described in the [step2's README file](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step2/docker-images/dynamic/README.md)
 
-* [Labo HTTP (2a): Application node "dockerisée"](https://www.youtube.com/watch?v=fSIrZ0Mmpis)
-* [Labo HTTP (2b): Application express "dockerisée"](https://www.youtube.com/watch?v=o4qHbf_vMu0)
+As asked to do differently (see Step2 section in [statements](Lab5-Statements.md), our generator gives random server's configuration (formatted as JSON, like those used in [our previous lab](https://github.com/KC5-BP/DAI-2022-SMTP-Classe-B/blob/main/config/configServer.json)) as dynamic payloads.
 
-### Acceptance criteria
+### In brief
 
-* You have a GitHub repo with everything needed to build the Docker image.
-* You can do a demo, where you build the image, run a container and access content from a browser.
-* You generate dynamic, random content and return a JSON payload to the client.
-* You cannot return the same content as the webcast (you cannot return a list of people).
-* You don't have to use express.js; if you want, you can use another JavaScript web framework or event another language.
-* You have **documented** your configuration in your report.
+Change directory to [docker-images/step2](docker-images/dynamic)
+
+In the shell, create container:
+
+```shell
+docker build --tag <A_USEFUL_AND_EASILY_IDENTIFIABLE_IMAGE_NAME> .
+# Here's a friendly tag again ^^
+docker build --tag dai/http_step2 .
+```
+
+Run it:
+
+```shell
+docker run -p 8080:3000 --rm <TAGGED_IMAGE_NAME>
+# With tagged container
+docker run -p 8080:3000 --rm dai/http_step2
+```
+
+With a browser, access it by typing in the nav. bar:
+
+```shell
+http://localhost:8080
+```
+
+This must output some server's config. in JSON format, and different ones at each page reload.
 
 ## Step 3: Docker compose to build the infrastructure
 
-There are no Webcasts (yet) for this part.
+Here, we will deploy a 1st version of the infrastructure with a static and dynamic web servers (respectively step1 & step2) using Docker compose.
 
-The goal of this step is to use Docker compose to deploy a first version of the infrastructure with a single static and a single dynamic Web server.
+This can be done using the [first version of compose rules](docker-images/docker-compose.yml.old).
 
-* You will need to install Docker compose on your machine. You'll find the instructions [on this link](https://docs.docker.com/compose/).
-* You will need to write a `docker-compose.yml` file. To do this, read the [introduction](https://docs.docker.com/compose/features-uses/), then have a look at this [tutorial](https://docs.docker.com/compose/gettingstarted/). They should provide the information you need to write your docker-compose file.
+### In brief
 
-### Acceptance criteria
+The first time, it is good to build all services:
 
-* You have added a `docker-compose.yml` file to your GitHub repo.
-* You can start and stop an infrastructure with a single dynamic and a single static Web server using docker compose.
-* You can access both Web servers on your local machine on the respective ports.
-* You have **documented** your configuration in your report.
+```shell
+docker-compose build
+```
 
-## Step 3: Reverse proxy with Traefik
+Then, start them:
+
+```shell
+# To build (optional) and run, but this will monopolize the shell
+docker-compose up [--build]
+
+# To run in background
+docker-compose start
+```
+
+We can visit the services through a browser by typing in the nav. bar:
+
+```shell
+# Accessing static
+http://localhost:9000
+
+# Accessing dynamic
+http://localhost:9001 # '/' being the default will tell that you'll have better chance with '/api' (kept because of the following part)
+http://localhost:9001/api # JSON configs
+```
+
+*Note: Might need to clear "Form & search history" to avoid auto-completion of a suggested page*
+
+## Step 3 (follow up): Reverse proxy with Traefik
 
 The goal of this step is to run a reverse proxy in front of the dynamic and static Web servers such that the reverse proxy receives all connections and relays them to the respective Web server. 
 
-*(Several old Webcasts are available ([5a](https://www.youtube.com/watch?v=iGl3Y27AewU) [5b](https://www.youtube.com/watch?v=lVWLdB3y-4I) [5c](https://www.youtube.com/watch?v=MQj-FzD-0mE) [5d](https://www.youtube.com/watch?v=B_JpYtxoO_E) [5e](https://www.youtube.com/watch?v=dz6GLoGou9k)) which show a methods to do this with Apache.
-However, **we do not recommend anymore to follow this method** but instead to use a more modern approach, based on [Traefik](https://traefik.io/traefik/). Traefik is a reverse proxy which interfaces directly with Docker to obtain the list of active backend servers. This means that it can dynamically adjust to the number of running server.)*
-
-The steps to follow for this section are thus:
-
-* read the [Traefik Quick Start](https://doc.traefik.io/traefik/getting-started/quick-start/) documentation and add a new service "reverse_proxy" to your `docker-compose.yml` file using the Traefik docker image
-* configure the Traefik service and the communication between the Web servers and Traefik:
-  * first read the documentation of Traefik, including those ones:
-    * the [Traefik Router](https://doc.traefik.io/traefik/routing/routers/) documentation, in particular the "Rule" section,
-    * the [Traefik & Docker](https://doc.traefik.io/traefik/routing/providers/docker/) documentation, in particular for the dynamic Web server. 
-  * then implement the reverse proxy:
-    * start by relaying the requests coming to "localhost/" to the **static HTTP server** (that's the easy part),
-    * then relay the requests coming to "localhost/api/" to the **dynamic HTTP server** (here you will need to search a little bit in the documentation how to use the "/api" path prefix),
+Using this time, the [docker-compose.yml](docker-images/docker-compose.yml).
 
 ### Acceptance criteria
 
@@ -102,6 +144,21 @@ The steps to follow for this section are thus:
 * You are able to explain why a reverse proxy is useful to improve the security of the infrastructure.
 * You have **documented** your configuration in your report.
 
+### In brief
+
+The build and run section are the same.
+
+The difference here is that we can access our services (always in the nav. bar of our browser) by only typing:
+
+```shell
+# Accessing static
+http://localhost
+
+# Accessing dynamic
+http://localhost/api
+```
+
+That must result with the same behavior as the previous section.
 
 ## Step 3a: Dynamic cluster management
 
@@ -116,6 +173,35 @@ Modify your `docker-compose.yml` file such that several instances of each Web se
 * You can do a demo to show that Traefik performs load balancing among the instances.
 * If you add or remove instances, you can show that the load balancer is dynamically updated to use the available instances.
 * You have **documented** your configuration in your report.
+
+### In brief
+
+Here, we have 2 possibilities to instanciate multiple instances.
+
+#### Using 'replicas' rules
+
+Add the `deploy` section to a service in the docker-compose.yml, like:
+
+```docker
+    static:
+        build: ./static/.
+        deploy:
+            replicas: 3
+```
+
+That will launch 3 instances of the static server.
+
+#### Using CLI argument
+
+```shell
+docker-compose up -d --scale <SERVICE_NAME>=<N_INSTANCES>
+# Ex. with the static service
+docker-compose up -d --scale static=3
+```
+
+This will have the same effect that using the replicas rules.
+
+*Reminder: -d flag launch the up cmd in background*
 
 ## Step 4: AJAX requests with JQuery
 
