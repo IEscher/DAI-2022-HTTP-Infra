@@ -13,7 +13,7 @@
 
 ## Nodejs + Express application
 
-On step1, we used an html page (static version). Let's use a more dynamic approach through a nodejs + express application, with a ["index.js"](src/index.js) file.
+On step1, we used an html page (static version). Let's use a more dynamic approach through a nodejs + express application, with a ["index.js"](docker-images/dynamic/src/index.js) file.
 
 ### Dependencies
 
