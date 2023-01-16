@@ -94,7 +94,7 @@ Here, we will deploy a 1st version of the infrastructure with a static and dynam
 
 All steps to dockerfile's rules and more detailed informations are described in the [step3's README file](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step3/README.md).
 
-This can be done using the [first version of compose rules]([docker-images/docker-compose.yml.old](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step3/docker-images/docker-compose.yml.old).
+This can be done using the [first version of compose rules](https://github.com/IEscher/DAI-2022-HTTP-Infra/blob/step3/docker-images/docker-compose.yml.old).
 
 ### In brief
 
